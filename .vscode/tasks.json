@@ -4,17 +4,34 @@
     {
       "label": "Run Items API",
       "type": "shell",
-      "command": "mvn",
-      "args": ["spring-boot:run"],
+      "command": "${workspaceFolder}/scripts/demo.sh",
+      "args": ["start"],
       "options": {
-        "cwd": "${workspaceFolder}",
-        "env": {
-          "JAVA_HOME": "/opt/homebrew/opt/openjdk@17"
-        }
+        "cwd": "${workspaceFolder}"
       },
       "presentation": {
         "reveal": "always",
         "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Stop Items API",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/demo.sh",
+      "args": ["stop"],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Clean Demo Runtime",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/demo.sh",
+      "args": ["clean"],
+      "options": {
+        "cwd": "${workspaceFolder}"
       },
       "problemMatcher": []
     },

@@ -6,7 +6,8 @@
       "name": "Debug Items API",
       "request": "launch",
       "mainClass": "com.agalyoon.items.ItemsApplication",
-      "cwd": "${workspaceFolder}"
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "Stop Items API"
     }
   ]
 }

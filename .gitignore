@@ -1,4 +1,6 @@
 /target/
+/.demo/
+/artifacts/
 /.idea/
 /.vscode/*
 !/.vscode/extensions.json

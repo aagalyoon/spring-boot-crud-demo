@@ -7,17 +7,19 @@ A small Spring Boot REST service for an `Item` domain, built for a live CRUD dem
 Requires Java 17 or newer and Maven 3.6.3 or newer.
 
 ```sh
-JAVA_HOME=/opt/homebrew/opt/openjdk@17 mvn clean test
-JAVA_HOME=/opt/homebrew/opt/openjdk@17 mvn spring-boot:run
+./scripts/demo.sh start
+./scripts/demo.sh status
 ```
 
-These commands use the Homebrew Java 17 installation on Adam's Mac. On another machine, use its installed JDK in `JAVA_HOME`. The API listens at `http://localhost:8080`. Data is in memory and resets when the application restarts.
+On macOS, the script uses Homebrew Java 17 when available, Maven, and a transient `launchctl` job. On other systems, run `mvn spring-boot:run` in a terminal and stop it with Ctrl+C. The API listens at `http://localhost:8080`. Data is in memory and resets when the application restarts.
 
 ## Demo in VS Code
 
-Open this folder in VS Code. The recommended Java and REST Client extensions provide Java run/debug support and `Send Request` links in [items.http](items.http). On Adam's Mac, choose **Terminal > Run Task > Run Items API** and wait for `Started ItemsApplication`; then open `items.http` and click **Send Request** above each request from top to bottom. The create response supplies the ID used by the read, update, and delete requests. The last two requests show the JSON `404` and validation `400` responses. The **Test Items API** task runs the integration tests; **Run and Debug > Debug Items API** is available for breakpoints.
+Open [spring-items-service.code-workspace](spring-items-service.code-workspace) in VS Code. The recommended Java and REST Client extensions provide Java run/debug support and `Send Request` links in [items.http](items.http). On macOS, choose **Terminal > Run Task > Run Items API**, then click **Send Request** above each request from top to bottom. The create response supplies the ID used by the read, update, and delete requests. The last two requests show the JSON `404` and validation `400` responses. **Test Items API** runs the integration tests; **Run and Debug > Debug Items API** stops the background server before launching the debugger.
 
-If port 8080 is already in use, stop the other process before starting this demo. The in-memory H2 database needs no installation and starts empty each time the app starts.
+The API runs at `http://localhost:8080`. Its PID and log live in the ignored `.demo/` folder, and Maven output lives in `target/`. H2 is in memory, so there is no database file or external database to remove. If port 8080 is in use by another process, the run task reports the conflict without stopping that process.
+
+When finished, stop any active VS Code debugger, choose **Terminal > Run Task > Clean Demo Runtime**, close the VS Code workspace, and delete this project folder. That task stops the demo job and removes `.demo/` and `target/`; it does not touch other TCS files. The public GitHub repository and user-wide VS Code extensions are separate from this local folder.
 
 ## Demo the API
 
