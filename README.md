@@ -13,6 +13,12 @@ JAVA_HOME=/opt/homebrew/opt/openjdk@17 mvn spring-boot:run
 
 These commands use the Homebrew Java 17 installation on Adam's Mac. On another machine, use its installed JDK in `JAVA_HOME`. The API listens at `http://localhost:8080`. Data is in memory and resets when the application restarts.
 
+## Demo in VS Code
+
+Open this folder in VS Code. The recommended Java and REST Client extensions provide Java run/debug support and `Send Request` links in [items.http](items.http). On Adam's Mac, choose **Terminal > Run Task > Run Items API** and wait for `Started ItemsApplication`; then open `items.http` and click **Send Request** above each request from top to bottom. The create response supplies the ID used by the read, update, and delete requests. The last two requests show the JSON `404` and validation `400` responses. The **Test Items API** task runs the integration tests; **Run and Debug > Debug Items API** is available for breakpoints.
+
+If port 8080 is already in use, stop the other process before starting this demo. The in-memory H2 database needs no installation and starts empty each time the app starts.
+
 ## Demo the API
 
 In another terminal:

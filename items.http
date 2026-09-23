@@ -1,0 +1,52 @@
+@baseUrl = http://localhost:8080
+
+# Run these requests from top to bottom. The create response supplies the ID
+# used by the later requests, so the demo also works after a prior run.
+
+### 1. List items
+GET {{baseUrl}}/items
+
+### 2. Create an item
+# @name createItem
+POST {{baseUrl}}/items
+Content-Type: application/json
+
+{
+  "name": "Keyboard",
+  "description": "Compact wireless keyboard",
+  "price": 49.99,
+  "quantity": 3
+}
+
+### 3. Read the created item
+GET {{baseUrl}}/items/{{createItem.response.body.$.id}}
+
+### 4. Update the created item
+PUT {{baseUrl}}/items/{{createItem.response.body.$.id}}
+Content-Type: application/json
+
+{
+  "name": "Wireless Keyboard",
+  "description": "Compact wireless keyboard",
+  "price": 54.99,
+  "quantity": 2
+}
+
+### 5. List the updated items
+GET {{baseUrl}}/items
+
+### 6. Delete the created item
+DELETE {{baseUrl}}/items/{{createItem.response.body.$.id}}
+
+### 7. Confirm the item is gone (404)
+GET {{baseUrl}}/items/{{createItem.response.body.$.id}}
+
+### 8. Show validation errors (400)
+POST {{baseUrl}}/items
+Content-Type: application/json
+
+{
+  "name": " ",
+  "price": 0,
+  "quantity": -1
+}
