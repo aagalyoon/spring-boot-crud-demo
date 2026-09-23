@@ -15,11 +15,11 @@ On macOS, the script uses Homebrew Java 17 when available, Maven, and a transien
 
 ## Demo in VS Code
 
-Open [spring-items-service.code-workspace](spring-items-service.code-workspace) in VS Code. The recommended Java and REST Client extensions provide Java run/debug support and `Send Request` links in [items.http](items.http). On macOS, choose **Terminal > Run Task > Run Items API**, then click **Send Request** above each request from top to bottom. The create response supplies the ID used by the read, update, and delete requests. The last two requests show the JSON `404` and validation `400` responses. **Test Items API** runs the integration tests; **Run and Debug > Debug Items API** stops the background server before launching the debugger.
+Open [spring-items-service.code-workspace](spring-items-service.code-workspace) in VS Code. The recommended Java and REST Client extensions provide Java run/debug support and `Send Request` links in [items.http](items.http). Trust this local workspace if VS Code opens it in Restricted Mode; otherwise those links stay hidden. Choose **Terminal > Run Task > Run Items API** to keep Spring Boot running visibly in the integrated terminal, then click **Send Request** above each request from top to bottom. The create response supplies the ID used by the read, update, and delete requests. The last two requests show the JSON `404` and validation `400` responses. **Test Items API** runs the integration tests; **Run and Debug > Debug Items API** stops the separate background demo job before launching the debugger.
 
 The API runs at `http://localhost:8080`. Its PID and log live in the ignored `.demo/` folder, and Maven output lives in `target/`. H2 is in memory, so there is no database file or external database to remove. If port 8080 is in use by another process, the run task reports the conflict without stopping that process.
 
-When finished, stop any active VS Code debugger, choose **Terminal > Run Task > Clean Demo Runtime**, close the VS Code workspace, and delete this project folder. That task stops the demo job and removes `.demo/` and `target/`; it does not touch other TCS files. The public GitHub repository and user-wide VS Code extensions are separate from this local folder.
+When finished, stop the running terminal task or debugger, choose **Terminal > Run Task > Clean Demo Runtime**, close the VS Code workspace, and delete this project folder. The cleanup task stops any separate background demo job and removes `.demo/` and `target/`; it does not touch other TCS files. The public GitHub repository and user-wide VS Code extensions are separate from this local folder.
 
 ## Demo the API
 

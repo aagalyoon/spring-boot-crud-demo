@@ -4,10 +4,14 @@
     {
       "label": "Run Items API",
       "type": "shell",
-      "command": "${workspaceFolder}/scripts/demo.sh",
-      "args": ["start"],
+      "command": "mvn",
+      "args": ["spring-boot:run"],
+      "dependsOn": ["Stop Items API"],
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "JAVA_HOME": "/opt/homebrew/opt/openjdk@17"
+        }
       },
       "presentation": {
         "reveal": "always",
